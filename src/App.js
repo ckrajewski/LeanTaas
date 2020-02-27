@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import classNames from 'classnames/bind';
 import { fetchStuff } from './actions/action';
-import HelloWorld from './components/HelloWorld/HelloWorld';
-import styles from './App.css';
+import Curiosity from './components/Curiosity/Curiosity';
 
 // const cx = classNames.bind(styles);
 
@@ -15,8 +14,8 @@ class App extends React.Component {
     });
     */
     return (
-      <div className={styles.notAnUglyBackground}>
-        <HelloWorld />
+      <div>
+        <Curiosity />
       </div>
     );
   }

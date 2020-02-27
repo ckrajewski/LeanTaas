@@ -1,0 +1,14 @@
+.checkbox {
+  padding-right: 2%;
+}
+
+.row {
+  display: flex;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.row:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
