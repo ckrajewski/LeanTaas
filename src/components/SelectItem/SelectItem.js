@@ -15,7 +15,8 @@ export default class SelectItem extends React.Component {
         handleSelect, value, children,
       } = this.props;
       const { checked } = this.state;
-      handleSelect(checked, event, { children, value });
+      handleSelect(checked, { children, value });
+      // this.setState({ h: false });
     });
   }
 
@@ -24,8 +25,8 @@ export default class SelectItem extends React.Component {
       value, children, selectAll, clearAll,
     } = this.props;
     const { checked } = this.state;
-    if ((selectAll && !checked) || (clearAll && checked)) {
-      this.handleSelect();
+    if (((selectAll && !checked) || (clearAll && checked))) {
+      this.setState(prevState => ({ checked: !prevState.checked }));
     }
     return (
       <div styleName="row" onClick={this.handleSelect}>

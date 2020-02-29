@@ -1,18 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import classNames from 'classnames/bind';
-import { fetchStuff } from './actions/action';
 import Curiosity from './components/Curiosity/Curiosity';
+import './App.css';
 
-// const cx = classNames.bind(styles);
-
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
-    /*
-    const className = cx({
-      notAnUglyBackground: true,
-    });
-    */
     return (
       <div>
         <Curiosity />
@@ -20,14 +11,3 @@ class App extends React.Component {
     );
   }
 }
-
-const mapToStateProps = state => ({
-  data: state.weather,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchStuff: () => dispatch(fetchStuff()),
-});
-
-
-export default connect(mapToStateProps, mapDispatchToProps)(App);

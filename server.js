@@ -1,14 +1,9 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const http = require('http');
-const fetch = require('node-fetch');
 const axios = require('axios');
 const bodyParser = require("body-parser");
-const jsStringEscape = require('js-string-escape')
 const openBrowser = require('react-dev-utils/openBrowser');
-const actionEndpoint ='/getStuff';
-const webEndpoint = 'http://testThis.org';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,13 +16,45 @@ app.listen(app.get('port'), function() {
 if (openBrowser('http://localhost:8080')) {
     console.log('The browser tab has been opened!');
 }
+isEmptyObject = obj => Object.entries(obj).length === 0 && obj.constructor === Object;
 
-app.get(actionEndpoint, (req, res) => {
+const parsePhotos = (data, cameras) => {
+	//if empty
+	if(isEmptyObject(data)) {
+		return {};
+	}
+	//create map by photo type
+	return data.photos.reduce((photos, photo) => {
+		const cameraName = photo.camera.name;
+		if (cameras.includes(cameraName)) {
+			let currentPhoto = {};
+			currentPhoto.cameraName = photo.camera.full_name;
+			currentPhoto.img_src = photo.img_src;
+			if( typeof photos[cameraName] === 'undefined') {
+				photos[cameraName] = [];
+			}
+			photos[cameraName].push(currentPhoto);
+		}
+		return photos;
+	},{});
+}
+app.get('/api/rover', (req, res) => {
     debugger;
-    axios.get(webEndpoint)
+    axios.get('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/?api_key=DEMO_KEY')
         .then(response => {
-           //handle stuff
+           res.send(response.data);
         }).catch(error => {
             console.log(error);
         });
+});
+
+app.post('/api/roverPhotos', (req, res) => {
+    debugger;
+    const { cameras, sol} = req.body;
+    axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=DEMO_KEY`)
+        .then(response => {
+           res.send(parsePhotos(response.data, cameras));
+        }).catch(error => {
+            console.log(error);
+    });
 });
