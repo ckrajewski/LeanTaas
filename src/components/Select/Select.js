@@ -72,11 +72,8 @@ export default class Select extends React.Component {
     return (
       <div>
         <div styleName="dropDownSelectorWrapper">
-          <div styleName="dropDownSelectorContainer">
-            <div
-              styleName="dropDownSelector"
-              onClick={this.handleClickDropDown}
-            >
+          <div styleName="dropDownSelectorContainer" onClick={this.handleClickDropDown}>
+            <div styleName="dropDownSelector">
               {selected.length}
               {' '}
             Selected
