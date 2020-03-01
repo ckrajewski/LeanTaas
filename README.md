@@ -66,6 +66,7 @@ In case you have any comments, questions, bugs, enhancements feel free to open a
 - [ ] Figure out how to close drop down when clicking anywhere outside on the page. Right now, it only closes when you re-click the drop down selector
 - [ ] Add better error handling
 - [ ] Prevent multiple servers calls from being made onChange. Can bog down NASA servers and cause an HTTP 429 error code
+- [ ] Add support for paginated requests
 - [ ] Make more comprehensive tests
 
 ## Sample Screenshots of Project
