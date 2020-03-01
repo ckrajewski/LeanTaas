@@ -36,7 +36,7 @@
   margin-bottom: 3%;
 }
 
-.dropDownSelector {
+.dropDownSelector:hover {
   position: relative;
 }
 

@@ -30,9 +30,13 @@ export default class SelectItem extends React.Component {
     return (
       <div onClick={this.handleSelect} styleName="checkboxRow">
         <label styleName="container">
-          {children}
+          <div styleName="label">
+            {' '}
+            {children}
+            {' '}
+          </div>
           <input type="checkbox" checked={checked} onClick={event => event.stopPropagation()} />
-          <span styleName="checkmark" />
+          <div styleName="checkmark" />
         </label>
       </div>
     );

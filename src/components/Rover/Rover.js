@@ -18,7 +18,7 @@ const Rover = (props) => {
       <div>
           Sample Image :
         <div styleName="imgContainer">
-          <img src={photos[0].img_src} alt="dsd" height="200" width="200" />
+          <img src={photos[Math.floor(Math.random() * photos.length)].img_src} alt="rover" height="200" width="200" />
         </div>
       </div>
     </div>
