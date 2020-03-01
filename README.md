@@ -64,6 +64,7 @@ In case you have any comments, questions, bugs, enhancements feel free to open a
 - [ ] Figure out how to close drop down when clicking anywhere outside on the page
 - [ ] Add better error handling
 - [ ] Prevent multiple servers calls from being made onChange. Can bog down NASA servers and cause an HTTP 429 error code
+- [ ] Make more comprehensive tests
 
 ## Sample Screenshots of Project
 
