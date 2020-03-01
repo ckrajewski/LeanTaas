@@ -70,6 +70,10 @@ In case you have any comments, questions, bugs, enhancements feel free to open a
 
 ## Sample Screenshots of Project
 
+### Select Screen
+
+![SelectScreen](./screenshots/Select.png)
+
 ### No Images Found Screen
 
 ![No Images Found Screen](./screenshots/NoImagesFound.png)
