@@ -14,6 +14,7 @@ export function fetchRoverInfo() {
 
 export function fetchRoverPhotos(cameras, sol) {
   return function (dispatch) {
+    dispatch({ type: 'RECEIVING_ROVER_PHOTOS', payload: {} });
     axios.post('/api/roverPhotos', { cameras, sol })
       .then((response) => {
         dispatch({ type: 'RECEIVED_ROVER_PHOTOS', payload: response.data });

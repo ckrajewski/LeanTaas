@@ -13,13 +13,15 @@ class Toolbar extends React.Component {
     this.selectNode = null;
     this.state = {
       sol: null,
+      cameras: null,
+      submitButtonDisabled: false,
     };
   }
 
   componentDidMount() {
     const { fetchRoverInfo } = this.props;
     debugger;
-    // fetchRoverInfo();
+    fetchRoverInfo();
   }
 
   setWrapperRef = (node) => {
@@ -27,23 +29,58 @@ class Toolbar extends React.Component {
   }
 
   handleSelect = (values) => {
-    const { sol } = this.state;
-    const { fetchRoverPhotos } = this.props;
-    if (values.length > 0) {
-      fetchRoverPhotos(values, sol);
+    // const { cameras } = this.state;
+    // const { fetchRoverPhotos } = this.props;
+    this.setState({ cameras: values }, () => {
+      const { sol, cameras } = this.state;
+      const { fetchRoverPhotos } = this.props;
+      debugger;
+      fetchRoverPhotos(cameras, sol);
+    });
+    // if (values.length > 0) {
+    // fetchRoverPhotos(values, sol);
+    // }
+  }
+
+  getPhotos = (event) => {
+    const { submitButtonDisabled } = this.state;
+    if (submitButtonDisabled) {
+      event.stopPropogation();
+      return;
     }
+    debugger;
+    this.setState({ submitButtonDisabled: true }, () => {
+      const { sol, cameras } = this.state;
+      const { fetchRoverPhotos } = this.props;
+      debugger;
+      fetchRoverPhotos(cameras, sol);
+    });
   }
 
   handleMouseMove = (event) => {
     const { selectNode } = this;
   }
 
+  handleInputChange = (event) => {
+    const sol = event.target.value;
+    this.setState({ sol }, () => {
+      const { sol, cameras } = this.state;
+      const { fetchRoverPhotos } = this.props;
+      debugger;
+      fetchRoverPhotos(cameras, sol);
+    });
+  }
+
   isEmptyObject = obj => Object.entries(obj).length === 0 && obj.constructor === Object;
 
   render() {
-    const { sol } = this.state;
-    const { rover } = this.props;
+    const { sol, submitButtonDisabled } = this.state;
+    const { rover, roverPhotos } = this.props;
     debugger;
+    if (!roverPhotos && submitButtonDisabled) {
+      this.setState({ submitButtonDisabled: false });
+    }
+    const disabledButtonStyling = submitButtonDisabled ? 'submitButtonDisabled' : '';
     return (
       <div styleName="toolbar" onMouseMove={this.handleMouseMove}>
         <div styleName="cameraContainer">
@@ -65,13 +102,22 @@ class Toolbar extends React.Component {
           <div styleName="label"> Sol </div>
           <input styleName="input" type="number" min={0} value={sol} onChange={event => this.setState({ sol: event.target.value })} />
         </div>
+        { /*
+        <div styleName="submitButtonWrapper">
+          <div onClick={this.getPhotos} styleName={`submitButton ${disabledButtonStyling}`}>
+           Get Photos </div>
+        </div>
+      */ }
       </div>
+
     );
   }
 }
 
 const mapToStateProps = state => ({
   rover: state.roverReducer.rover,
+  roverPhotos: state.roverReducer.roverPhotos,
+
 });
 
 const mapDispatchToProps = dispatch => ({

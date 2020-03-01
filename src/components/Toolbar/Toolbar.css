@@ -29,9 +29,32 @@
   position: relative;
   border: none;
   font-size: 1rem;
-  width: 40%;
+  width: 70%;
 }
 
 .inputContainer {
   height: 100%;
+  width: 7%;
+}
+
+.submitButton {
+  cursor: pointer;
+  padding: 1%;
+  border-radius: 10px;
+  margin-top: 11%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: lightblue;
+  color: white;
+  border: solid #7a8797 1px;
+}
+
+.submitButtonWrapper {
+  width: 15%;
+}
+
+.submitButtonDisabled {
+  opacity: 0.5;
+  cursor: default;
 }

@@ -10,6 +10,9 @@ export default class SelectItem extends React.Component {
   }
 
   handleSelect = (event) => {
+    if (event.target.input) {
+      return;
+    }
     this.setState(prevState => ({ checked: !prevState.checked }), () => {
       const {
         handleSelect, value, children,
@@ -25,17 +28,17 @@ export default class SelectItem extends React.Component {
       value, children, selectAll, clearAll,
     } = this.props;
     const { checked } = this.state;
+    // const checkboxStyling = checked ? 'active' : '';
     if (((selectAll && !checked) || (clearAll && checked))) {
       this.setState(prevState => ({ checked: !prevState.checked }));
     }
     return (
-      <div styleName="row" onClick={this.handleSelect}>
-        <div styleName="checkbox">
-          <input type="checkbox" checked={checked} />
-        </div>
-        <div>
+      <div onClick={this.handleSelect} styleName="checkboxRow">
+        <label styleName="container">
           {children}
-        </div>
+          <input type="checkbox" checked={checked} onClick={event => event.stopPropagation()} />
+          <span styleName="checkmark" />
+        </label>
       </div>
     );
   }

@@ -1,19 +1,42 @@
+.arrowDown {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid black;
+  margin-left: 4%;
+  margin-top: 25%;
+}
+
+.arrowContainer {
+  margin-left: 4%;
+}
+
 .container {
   width: 40%;
 }
 
-.selectors {
-  display: flex;
-  justify-content: space-between;
-}
-
-.dropDownSelector {
+.dropDownSelectorWrapper {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   font-size: 1rem;
   text-align: center;
   border-radius: 10px;
   background-color: white;
+  cursor: pointer;
+}
+
+.dropDownSelectorContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.selectors {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
+
+.dropDownSelector {
   position: relative;
 }
 

@@ -12,6 +12,10 @@ export default function reducer(state = {
     {
       return { ...state, fetched: false, rover: action.payload };
     }
+    case 'RECEIVING_ROVER_PHOTOS':
+    {
+      return { ...state, fetched: false, roverPhotos: false };
+    }
     case 'RECEIVED_ROVER_PHOTOS':
     {
       return { ...state, fetched: true, roverPhotos: action.payload };

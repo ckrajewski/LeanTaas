@@ -5,6 +5,7 @@ export default class Select extends React.Component {
   constructor() {
     super();
     this.allSelectedValues = [];
+    this.dropDown = null;
     this.state = {
       dropDownVisible: false,
       selected: [],
@@ -13,12 +14,12 @@ export default class Select extends React.Component {
     };
   }
 
-  componentDidMount() {
+  populateAllSelectValues = () => {
     const { children } = this.props;
-    const { allSelectedValues } = this;
     React.Children.map(children, (child) => {
-      allSelectedValues.push(child.props.value);
+      this.allSelectedValues.push(child.props.value);
     });
+    debugger;
   }
 
   handleSelect = (checked, info) => {
@@ -66,22 +67,32 @@ export default class Select extends React.Component {
     const {
       dropDownVisible, selected, selectAll, clearAll,
     } = this.state;
+    debugger;
+    if (children && children.length > 0 && this.allSelectedValues.length === 0) {
+      this.populateAllSelectValues();
+    }
     const visibleCSS = dropDownVisible ? '' : 'hidden';
     return (
-      <div onBlur={() => {
-        debugger;
-        this.setState({ dropDownVisible: false });
-      }}
-      >
-        <div styleName="dropDownSelector" onClick={this.handleClickDropDown}>
-          {selected.length}
-          {' '}
-        Selected
+      <div>
+        <div styleName="dropDownSelectorWrapper">
+          <div styleName="dropDownSelectorContainer">
+            <div
+              styleName="dropDownSelector"
+              onClick={this.handleClickDropDown}
+            >
+              {selected.length}
+              {' '}
+            Selected
+            </div>
+            <div styleName="arrowContainer">
+              <div styleName="arrowDown" />
+            </div>
+          </div>
         </div>
         <div styleName={`dropDownContainer ${visibleCSS}`}>
           <div styleName="selectors">
-            <div styleName="clearAll" onClick={this.handleClearAll}> Clear All </div>
             <div styleName="selectAll" onClick={this.handleSelectAll}> Select All </div>
+            <div styleName="clearAll" onClick={this.handleClearAll}> Clear All </div>
           </div>
           <div>
             {React.Children.map(children, child => (
