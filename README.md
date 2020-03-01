@@ -47,6 +47,8 @@ An onChange event handler bubbles up the list selected values for you!
 
 Capture this event to then decide where and how to handle the user's selected values
 
+To close the drop down, re-click the drop down selector.
+
 ![Custom Select Component](./screenshots/SelectComponent.png)
 
 ## Tools Used
@@ -61,7 +63,7 @@ Capture this event to then decide where and how to handle the user's selected va
 In case you have any comments, questions, bugs, enhancements feel free to open an issue in this repository.
 
 ## Improvements
-- [ ] Figure out how to close drop down when clicking anywhere outside on the page
+- [ ] Figure out how to close drop down when clicking anywhere outside on the page. Right now, it only closes when you re-click the drop down selector
 - [ ] Add better error handling
 - [ ] Prevent multiple servers calls from being made onChange. Can bog down NASA servers and cause an HTTP 429 error code
 - [ ] Make more comprehensive tests
