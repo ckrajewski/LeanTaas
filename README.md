@@ -2,7 +2,7 @@
 
 ## Contribution
 
-I've collected a list of [Improvements and New Features](#improvements) that need to be done.
+I've collected a list of [Improvements](#improvements) that need to be done.
 If you'd like to help by contributing to the project, you're more than welcome to! 
 
 ## Install and run
@@ -73,8 +73,8 @@ In case you have any comments, questions, bugs, enhancements feel free to open a
 
 ### Loading Screen
 
-![Loading Screen](./screenshots/LoadingScreen.png)
+![Loading Screen](./screenshots/Loading.png)
 
 ### Images Returned Screen
 
-![Images Returned Screen](./screenshots/imagesReturned.png)
+![Images Returned Screen](./screenshots/ImagesReturned.png)
