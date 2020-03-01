@@ -29,7 +29,13 @@
         "react/prefer-stateless-function": "warn",
         "no-unused-vars": "warn",
         "react/no-unused-state": "warn",
+        "camelcase" : "warn",
+        "allowShortCircuit" : true,
+        "allowTernary": true,
         "jsx-a11y/click-events-have-key-events": 0,
-        "jsx-a11y/no-static-element-interactions": 0
+        "jsx-a11y/no-static-element-interactions": 0,
+        "jsx-a11y/label-has-associated-control" : "warn",
+        "jsx-a11y/label-has-for": "warn",
+        "no-nested-ternary" : "warn"
     }
 }

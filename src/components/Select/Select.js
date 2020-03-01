@@ -19,13 +19,11 @@ export default class Select extends React.Component {
     React.Children.map(children, (child) => {
       this.allSelectedValues.push(child.props.value);
     });
-    debugger;
   }
 
   handleSelect = (checked, info) => {
     const { selected } = this.state;
     const { value } = info;
-    debugger;
     if (checked) {
       selected.push(info.value);
     } else {
@@ -67,7 +65,6 @@ export default class Select extends React.Component {
     const {
       dropDownVisible, selected, selectAll, clearAll,
     } = this.state;
-    debugger;
     if (children && children.length > 0 && this.allSelectedValues.length === 0) {
       this.populateAllSelectValues();
     }

@@ -10,16 +10,12 @@ export default class SelectItem extends React.Component {
   }
 
   handleSelect = (event) => {
-    if (event.target.input) {
-      return;
-    }
     this.setState(prevState => ({ checked: !prevState.checked }), () => {
       const {
         handleSelect, value, children,
       } = this.props;
       const { checked } = this.state;
       handleSelect(checked, { children, value });
-      // this.setState({ h: false });
     });
   }
 
@@ -28,7 +24,6 @@ export default class SelectItem extends React.Component {
       value, children, selectAll, clearAll,
     } = this.props;
     const { checked } = this.state;
-    // const checkboxStyling = checked ? 'active' : '';
     if (((selectAll && !checked) || (clearAll && checked))) {
       this.setState(prevState => ({ checked: !prevState.checked }));
     }
