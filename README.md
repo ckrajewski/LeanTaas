@@ -25,7 +25,7 @@ It may open the tab before everything is loaded, but that's OK. After waiting fo
 
 ## Running Tests
 
-Open a terminal and cd into the `Zendesk` folder. Then:
+Open a terminal and cd into the `LeanTaas` folder. Then:
 
 1. `npm test` 
 
