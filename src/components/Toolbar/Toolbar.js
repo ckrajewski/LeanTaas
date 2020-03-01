@@ -49,9 +49,9 @@ class Toolbar extends React.Component {
       <div styleName="toolbar" onMouseMove={this.handleMouseMove}>
         <div styleName="cameraContainer">
           <div styleName="label"> Cameras </div>
-          <Select onSelect={this.handleSelect} ref={this.setWrapperRef}>
+          <Select onSelect={this.handleSelect}>
             {
-          !isEmptyObject(rover) ? rover.rover.cameras.map((camera, index) => {
+          !isEmptyObject(rover) ? rover.rover.cameras.map((camera) => {
             const { name, full_name } = camera;
             return (
               <SelectItem value={name}>
