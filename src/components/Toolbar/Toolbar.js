@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Select from '../Select/Select';
 import SelectItem from '../SelectItem/SelectItem';
 import Rover from '../Rover/Rover';
-import { isEmptyObject } from '../../Util';
+import { isEmptyObject } from '../../Utils';
 import { fetchRoverInfo, fetchRoverPhotos } from '../../actions/action';
 import './Toolbar.css';
 // const cx = classNames.bind(styles);
