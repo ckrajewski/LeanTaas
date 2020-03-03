@@ -14,7 +14,7 @@ class Toolbar extends React.Component {
     this.selectNode = null;
     this.state = {
       sol: null,
-      cameras: null,
+      cameras: [],
     };
   }
 
@@ -38,7 +38,9 @@ class Toolbar extends React.Component {
     this.setState({ sol }, () => {
       const { sol, cameras } = this.state;
       const { fetchRoverPhotos } = this.props;
-      fetchRoverPhotos(cameras, sol);
+      if (cameras.length > 0) {
+        fetchRoverPhotos(cameras, sol);
+      }
     });
   }
 

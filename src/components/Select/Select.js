@@ -1,7 +1,8 @@
 import React from 'react';
+import ClickOutside from '../ClickOutside/ClickOutside';
 import './Select.css';
 
-export default class Select extends React.Component {
+class Select extends React.Component {
   constructor() {
     super();
     this.allSelectedValues = [];
@@ -61,16 +62,16 @@ export default class Select extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, refProp, clickedOutside } = this.props;
     const {
       dropDownVisible, selected, selectAll, clearAll,
     } = this.state;
     if (children && children.length > 0 && this.allSelectedValues.length === 0) {
       this.populateAllSelectValues();
     }
-    const visibleCSS = dropDownVisible ? '' : 'hidden';
+    const visibleCSS = (!dropDownVisible || clickedOutside) ? 'hidden' : '';
     return (
-      <div>
+      <div ref={refProp}>
         <div styleName="dropDownSelectorWrapper">
           <div styleName="dropDownSelectorContainer" onClick={this.handleClickDropDown}>
             <div styleName="dropDownSelector">
@@ -97,3 +98,4 @@ export default class Select extends React.Component {
     );
   }
 }
+export default ClickOutside(Select);
