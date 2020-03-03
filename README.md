@@ -47,8 +47,6 @@ An onChange event handler bubbles up the list selected values for you!
 
 Capture this event to then decide where and how to handle the user's selected values
 
-To close the drop down, re-click the drop down selector.
-
 ![Custom Select Component](./screenshots/SelectComponent.png)
 
 ## Tools Used
